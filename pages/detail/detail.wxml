@@ -1,0 +1,63 @@
+<view class="main-title">
+  <view id="research_title">
+    {{contdata.research_title}}
+  </view>
+  <view style='position: relative;'>
+    <!-- <view class='return_home'>
+      返回主页 
+      </view>  -->
+    <span>伴小羊</span>
+    <span class="icon-zdy">官方审核</span>
+    <!-- <span id="add_time">{{contdata.addtime}}</span>  -->
+    <span id="add_time">{{dqtime}}</span>
+  </view>
+</view>
+<view class="content">
+  <view class="sh-yz">
+    <view>审核结果：</view>
+    <view style="color:#{{contdata.color}}" id="pfdz">
+      {{contdata.score}}%
+      <span style='font-size: 18px;'>{{contdata.text}}</span>
+    </view>
+    <view>（本结果仅供参考）</view>
+  </view>
+
+  <view id="list_show" class="cont-tab">
+    <view wx:for="{{contdata.show}}" class="ct1">
+      {{item.text}} :
+      <b>{{item.code}}</b>
+    </view>
+
+  </view>
+  <view class="key-word">
+    <view class="kw1">
+      关键词：
+    </view>
+    <view id="kw2" class="kw2">
+      <view wx:for="{{contdata.new_keyword}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+  <view class="text-line">
+    <view></view>
+  </view>
+  <view id="research_detail" class="con-txt">
+    {{contdata.research_detail}}
+  </view>
+
+</view>
+
+
+<view wx:if="{{!is_show_btn}}" class="foot">
+  <view class="foot-line"></view>
+  <view style='background-color: #F8F8F8;'>有信息补充?
+    <span bindtap="go_addlist" id="bcjk">点此补充</span>
+  </view>
+</view>
+<block wx:else>
+  <!-- <view class='foot' style='background-color:#F1F1F1'></view>  -->
+  <navigator url='/pages/index/index' class="foot return_foot">
+    返回首页
+  </navigator>
+</block>

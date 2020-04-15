@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/downapp/downapp"    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "伴小羊-防骗查询小程序",
+    "navigationBarTextStyle":"black"
+  },
+  "debug": false
+
+}

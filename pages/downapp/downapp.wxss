@@ -1,0 +1,28 @@
+.codeimg{
+  margin: 10px 0;
+  height: 200px;
+  text-align: center;
+}
+.codeimg image{
+  height: 100%;
+}
+text{
+  font-size: 16px;
+  line-height: 35px;
+}
+.text-cont{
+  text-align: center;
+  padding: 20px 30px 10px 30px;
+}
+.line{
+  border-top: 1px #cecece dashed;
+  margin: 0 20px;
+}
+@media screen and (max-width:350px){
+  .text-cont{
+    padding: 10px 30px 0 30px;
+  }
+  .codeimg{
+    margin: 20px 0;
+  }
+}

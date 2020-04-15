@@ -1,0 +1,16 @@
+<view class='text-cont'>
+  <text>您可以
+  长按下图二维码保存到本地
+  进行扫码下载app</text>
+</view>
+<view class='codeimg' bindlongtap='saveimg'>
+   <image mode='aspectFit' src='../../images/code1.png'></image>
+</view>
+<view class='line'></view>
+<view class='text-cont'>
+  <text>或者点击下方按钮复制网址
+  进入浏览器下载</text>
+</view>
+<view style='padding:10px 20px;'>
+  <button bindtap='set_cont'>复制网址</button>   
+</view>

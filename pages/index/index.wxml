@@ -1,0 +1,106 @@
+<!-- <import src="../../template/showToast/showToast" />  -->
+<!-- <template is="showToast" data="{{showToast: showToast}}" /> -->
+<view>{{ceshitxt}}</view>
+<view class="ser-ipt">
+  <view style="-webkit-box-flex:1;line-height: 20px;">
+    <image mode='widthFix' class='fdimage' src="../../images/sousuo.png" alt="搜索"></image>
+  </view>
+  <view style="-webkit-box-flex:20;">
+    <input bindinput="serinput_fn" bindconfirm="sear_btn" confirm-type="search" value="{{serText}}" id="ser_txt" type="text" placeholder="{{defaultKey}}"></input>
+  </view>
+  <view class="po_re">
+    <view bindtap="del_serText" class="clear-txt">
+      <view class="clear-txt-x">
+        <image mode='widthFix' src="../../images/closeipt.png" class='fd-imgdel' alt=""></image>
+      </view>
+    </view>
+  </view>
+  <view id="ser_btn" bindtap='sear_btn' style="-webkit-box-flex:2;color: #FF6326;text-align: right;">
+    搜索
+  </view>
+</view>
+<view wx:if="{{pageShow.main}}" class="index-main">
+  <view class="his-title">
+    <view style="-webkit-box-flex:20;">
+      历史查询
+    </view>
+    <view id="shanchu" style="-webkit-box-flex:1;">
+      <image bindtap='clearStorage' mode='widthFix' class='img' src="../../images/shanchu.png" alt="清空"></image>
+    </view>
+  </view>
+  <view id="his_div" class="his-list">
+    <block wx:if="{{hisKey.length <= 0}}">
+      无历史记录
+    </block>
+    <block wx:else>
+      <view bindtap='click_ser' data-type="old" data-id="{{index}}" wx:for="{{hisKey}}">{{item}}</view>
+    </block>
+  </view>
+  <view class="his-title">
+    <view style="width: 4em;">
+      新型骗局
+    </view>
+    <view style="margin-left: 10px;">
+      <image mode='widthFix' class='img' src="../../images/tanhao.png" alt="叹号"></image>
+    </view>
+  </view>
+  <view id="hot_div" class="his-list">
+    <!-- newkey -->
+    <block wx:if="{{newKey.length <= 0}}">
+      无热点骗局
+    </block>
+    <block wx:else>
+      <view bindtap='click_ser' data-type="new" data-id="{{index}}" wx:for="{{newKey}}">{{item.new_name}}</view>
+    </block>
+  </view>
+  <!-- <view bindtap='gologs' class="ggl">     -->
+  <view class="ggl">
+    <image bindtap='go_addlist' mode='widthFix' class='img' src="../../images/ggimg.png"></image>
+    <!--广告栏-->
+  </view>
+</view>
+<scroll-view bindscrolltolower="load_data" lower-threshold="90" style="height:93vh;" scroll-y wx:if="{{pageShow.list}}" id="list_div" class="list">
+  <view wx:for="{{listCont}}" wx:for-item="item1" wx:for-index="index1" wx:key="research_id" bindtap="goDetail" data-id="{{item1.research_id}}" class="list-content">
+    <view class="cont-l">
+      <view>
+        <span class="{{item3==serText_yz?'high':''}}" wx:for="{{item1.research_title}}" wx:for-item="item3">{{item3}}</span>
+      </view>
+      <view>
+        <span style="font-size:15px;">关键字:</span>
+        <view wx:for-item="item2" wx:for="{{item1.new_keyword}}" class='p'>
+          <span class="{{item4==serText_yz?'high':''}}" wx:for="{{item2}}" wx:for-item="item4">{{item4}}</span>
+        </view>
+      </view>
+    </view>
+    <view class="cont-r">
+      <view>{{item1.score}}%</view>
+      <view style="font-size:18px;">{{item1.text}}</view>
+    </view>
+  </view>
+  <view wx:if="{{pages.zts}}" class="foot">
+    (つД`)ノ没有找到您想要的内容
+    <span style="color: #FF9800;" bindtap='go_addlist'>点 此 添 加</span>
+  </view>
+</scroll-view>
+<!-- <view wx:if="{{pageShow.list}}" class="foot">
+		  (つД`)ノ没有找到您想要的内容 <span style="color: #FF9800;" onclick="">点 此 添 加</span>  
+	</view>   -->
+<view wx:if="{{pageShow.noresult}}" class="ser-noresult">
+  <view style="margin-top: 150px;color: #8282A0;">
+    (｡ ́︿ ̀｡) 抱歉，没有找到相关的内容。
+  </view>
+  <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">  -->
+  <view bindtap='go_addlist' id="ts_alert" style="padding-top: 50px;">
+    <span class="jiahao">
+      <image mode='widthFix' class='img' src="../../images/add1.png" alt=""></image>
+    </span>
+    <view style="color: #FF6326;">
+      点 此 添 加
+    </view>
+  </view>
+  <!-- </button> -->
+
+</view>
+
+<!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
+  </button>   -->
